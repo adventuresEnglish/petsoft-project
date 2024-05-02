@@ -3,7 +3,6 @@
 import { usePetContext, useSearchContext } from "@/lib/hooks";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import React from "react";
 
 export default function PetList() {
   const { pets, selectedPetId, handleChangeSelectedPetId } = usePetContext();
@@ -32,7 +31,7 @@ export default function PetList() {
               height={45}
               className="rounded-full object-cover w-[45px] h-[45px]"
             />
-            <p className="font-semibold">{pet.name}</p>
+            <p className={"font-semibold"}>{pet.name}</p>
           </button>
         </li>
       ))}
