@@ -2,7 +2,7 @@ import "server-only";
 
 import { Pet, User } from "@prisma/client";
 import { redirect } from "next/navigation";
-import { auth } from "./auth";
+import { auth } from "./auth-no-edge";
 import prisma from "./db";
 
 export async function checkAuth() {
