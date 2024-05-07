@@ -23,12 +23,12 @@ export default function Home() {
         </p>
         <div className="mt-10 space-x-3">
           <Button asChild>
-            <Link href="../signup">Get Started</Link>
+            <Link href="/signup">Get Started</Link>
           </Button>
           <Button
             variant="secondary"
             asChild>
-            <Link href="../signup">Login</Link>
+            <Link href="/login">Login</Link>
           </Button>
         </div>
       </div>

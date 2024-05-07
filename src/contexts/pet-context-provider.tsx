@@ -3,7 +3,7 @@
 import { addPet, deletePet, editPet } from "@/actions/actions";
 import { PetEssentials } from "@/lib/types";
 import { Pet } from "@prisma/client";
-import { createContext, useOptimistic, useState } from "react";
+import { createContext, startTransition, useOptimistic, useState } from "react";
 import { toast } from "sonner";
 
 type PetContextProviderProps = {
@@ -69,7 +69,9 @@ export default function PetContextProvider({
   };
 
   const handleCheckoutPet = async (petId: Pet["id"]) => {
-    setOptimisticPets({ action: "delete", payload: petId });
+    startTransition(() => {
+      setOptimisticPets({ action: "checkout", payload: petId });
+    });
     const error = await deletePet(petId);
     if (error) {
       toast.warning(error.message);

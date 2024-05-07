@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SessionProvider } from "next-auth/react";
 import { Inter } from "next/font/google";
 import "../styles/globals.css";
 
@@ -18,7 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={`${inter.className} min-h-screen text-sm text-zinc-900 bg-[#E5E8EC]`}>
-        {children}
+        <SessionProvider>{children}</SessionProvider>
       </body>
     </html>
   );
