@@ -1,6 +1,8 @@
 import { NextAuthConfig } from "next-auth";
 import prisma from "./db";
 
+
+// we created this edge auth file because bcrypt can cause issues on the edge as you know we use bcrypt in the nonedgefile. We also seemingly can't import files into edge file. Strange issue
 export const nextAuthEdgeConfig = {
   pages: {
     signIn: "/login",
@@ -57,6 +59,7 @@ export const nextAuthEdgeConfig = {
       }
       if (trigger === "update") {
         // on every request
+        // we dont import getUserByEmail because it causes issues
         const userFromDb = await prisma.user.findUnique({
           where: {
             email: token.email,
